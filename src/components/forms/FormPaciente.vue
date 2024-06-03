@@ -28,7 +28,7 @@
       </q-input>
       <q-input v-model="tel" outlined type="tel" hint="Telefone" />
       <q-input v-model="email" outlined type="email" hint="Email" />
-      <q-select outlined v-model="genero" :options="options" label="Genero" />
+      <q-select outlined v-model="genero" :options="generos" label="Genero" />
       <q-input v-model="cidade" outlined type="cidade" hint="Cidade" />
       <q-select outlined v-model="uf" :options="estados" label="UF" />
       <q-input v-model="endereco" outlined type="endereco" hint="Endereco" />
@@ -61,6 +61,7 @@ export default defineComponent({
   setup() {
     const date = new Date();
     const novoCadastro = ref(false);
+    const dataMontada = ref("");
 
     let day = date.getDate();
     let month = date.getMonth() + 1;
@@ -69,68 +70,78 @@ export default defineComponent({
     // This arrangement can be altered based on how we want the date's format to appear.
     let currentDate = `${day}/${month}/${year}`;
 
-    console.log(currentDate);
+    const dataNasc = ref(currentDate);
 
     const novoPaciente = function () {
       novoCadastro.value = true;
     };
-    return {
-      nome: ref(""),
-      dataNasc: ref(currentDate),
-      email: ref(""),
-      tel: ref(""),
-      uf: ref(""),
-      cidade: ref(""),
-      endereco: ref(""),
-      genero: ref(""),
-      estados: [
-        "Acre",
-        "Alagoas",
-        "Amapá",
-        "Amazonas",
-        "Bahia",
-        "Ceará",
-        "distrito federal",
-        "Espírito Santo",
-        "Goiás",
-        "Maranhão",
-        "Mato Grosso",
-        "Mato Grosso do Sul",
-        "Minas Gerais",
-        "Pará",
-        "Paraíba",
-        "Paraná",
-        "Pernambuco",
-        "Piauí",
-        "Rio de Janeiro",
-        "Rio Grande do Norte",
-        "Rio Grande do Sul",
-        "Rondônia",
-        "Roraima",
-        "Santa Catarina",
-        "São Paulo",
-        "Sergipe",
-        "Tocantins",
-      ],
-      novoCadastro,
-      novoPaciente,
+    const montadata = function () {
+      const [dia, mes, ano] = dataNasc.value.split("/");
+      dataMontada.value = `${ano}-${mes}-${dia}`;
     };
-  },
-  methods: {
-    postPaciente() {
+
+    const postPaciente = function () {
+      montadata();
+      console.log(dataMontada.value);
       api
-        .post("/paciente", {
+        .post("/pacientes", {
           NOMEPACI: this.nome,
-          DATANASPACI: this.dataNasc,
+          DATANASPACI: dataMontada.value,
           GENPACI: this.genero,
-          ENDERPACI: "",
+          ENDERPACI: this.endereco,
           CIDADEPACI: this.cidade,
           UFPACI: this.uf,
           TELPACI: this.tel,
           EMAILPACI: this.email,
         })
         .then(() => (novoCadastro.value = true));
-    },
+
+      location.reload();
+    };
+
+    return {
+      nome: ref(""),
+      dataNasc,
+      email: ref(""),
+      tel: ref(""),
+      uf: ref(""),
+      cidade: ref(""),
+      endereco: ref(""),
+      genero: ref(""),
+      generos: ["Mas", "Fem", "Outro"],
+      estados: [
+        "AC",
+        "AL",
+        "AP",
+        "AM",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MT",
+        "MS",
+        "MG",
+        "PA",
+        "PB",
+        "PR",
+        "PE",
+        "PI",
+        "RJ",
+        "RN",
+        "RS",
+        "RO",
+        "RR",
+        "SC",
+        "SP",
+        "SE",
+        "TO",
+      ],
+      novoCadastro,
+      novoPaciente,
+      postPaciente,
+    };
   },
 });
 </script>

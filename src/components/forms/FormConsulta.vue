@@ -88,13 +88,12 @@ export default defineComponent({
 
     const postConsulta = function () {
       montadata();
-      api
-        .post("/consultas", {
-          IDPACIENTECON: this.selectPaciente.id,
-          IDMEDICOCON: this.selectMedico.id,
-          DATACON: this.dataMontada,
-        })
-        .then((response) => console.log(response));
+      api.post("/consultas", {
+        IDPACIENTECON: this.selectPaciente.id,
+        IDMEDICOCON: this.selectMedico.id,
+        DATACON: this.dataMontada.value,
+      });
+      location.reload();
     };
 
     const novaConsulta = function () {

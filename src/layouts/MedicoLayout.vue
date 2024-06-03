@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn flat round color="" icon="home" to="/" />
+        <q-btn flat round color="" icon="home" to="/menu" />
         <q-toolbar-title> Médicos </q-toolbar-title>
       </q-toolbar>
     </q-header>

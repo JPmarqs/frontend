@@ -65,7 +65,6 @@
     </div>
     <q-dialog v-model="formEmEdicao">
       <q-card>
-        {{ consultaEmEdicao }}
         <q-card-section>
           <q-select
             outlined

@@ -3,21 +3,21 @@
     <div class="col-3 q-pl-md q-pt-md q-pb-md flex">
       <q-btn
         color="primary"
-        label="Painel de consultas"
+        label="Consultas"
         style="font-size: 16px; width: 100%"
         to="/consulta"
       />
       <q-separator style="width: 90%" inset />
       <q-btn
         color="primary"
-        label="Painel de Medicos"
+        label="Medicos"
         style="font-size: 16px; width: 100%"
         to="/medicos"
       />
       <q-separator style="width: 90%" inset />
       <q-btn
         color="primary"
-        label="Painel de Pacientes"
+        label="Pacientes"
         style="font-size: 16px; width: 100%"
         to="/pacientes"
       />

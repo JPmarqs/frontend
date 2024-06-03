@@ -58,7 +58,7 @@ export default defineComponent({
         })
         .then((response) => {
           if (response.status === 200) {
-            router.push("/");
+            router.push("/menu");
             q.notify({
               color: "success",
               message: `Usuário logado ${logado.value}`,
