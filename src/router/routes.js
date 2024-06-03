@@ -18,12 +18,6 @@ const routes = [
   },
 
   {
-    path: "/login",
-    component: () => import("layouts/LoginLayout.vue"),
-    children: [{ path: "", component: () => import("pages/LoginPage.vue") }],
-  },
-
-  {
     path: "/consulta",
     component: () => import("layouts/ConsultaLayout.vue"),
     children: [{ path: "", component: () => import("pages/ConsultaPage.vue") }],
