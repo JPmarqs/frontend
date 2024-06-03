@@ -28,6 +28,14 @@
       </q-input>
       <div class="q-mt-lg">
         <q-btn @click="logar()" color="primary" icon="done" label="Entrar" />
+        <q-btn
+          class="q-ml-lg"
+          outline
+          to="/cadastro"
+          color="primary"
+          icon="add"
+          label="Novo cadastro"
+        />
       </div>
     </div>
   </div>

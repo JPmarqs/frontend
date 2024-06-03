@@ -85,6 +85,7 @@ export default defineComponent({
               color: "success",
               message: "Usuário cadastrado com sucesso",
             });
+            router.push("/");
           }
 
           if (response.status === 500) {
