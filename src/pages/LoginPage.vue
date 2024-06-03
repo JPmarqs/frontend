@@ -1,6 +1,7 @@
 <template>
   <q-card class="flex row justify-evenly items-center q-pt-xs q-pb-xs">
     <FormLogin />
+    .
   </q-card>
 </template>
 
