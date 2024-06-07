@@ -92,7 +92,7 @@
             round
             color="primary"
             label="Editar"
-            @click="patchConsulta()"
+            @click="patchConsulta(consultaEmEdicao)"
           />
           <q-btn
             flat
@@ -167,10 +167,12 @@ const patchConsulta = async function (consulta) {
   try {
     montadata();
     const response = await api.patch(`/consultas/${consulta.IDCONSULTA}`, {
-      IDPACIENTECON: consulta.IDPACIENTECON,
-      IDMEDICOCON: consulta.IDPACIENTECON,
-      DATACON: consulta.DATACON,
+      IDPACIENTECON: consulta.IDPACIENTECON.id,
+      IDMEDICOCON: consulta.IDMEDICOCON.id,
+      DATACON: dataMontada.value,
     });
+    fetchConsultas();
+    formEmEdicao.value = false;
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -222,7 +224,7 @@ const filtrar = function () {
 
 const montadata = function () {
   const hora = horaConsulta;
-  const [dia, mes, ano] = dataConsulta.value.split("/");
+  const [ano, mes, dia] = dataConsulta.value.split("/");
   dataMontada.value = `${ano}-${mes}-${dia} ${hora.value}:00`;
 };
 

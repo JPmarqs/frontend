@@ -87,7 +87,8 @@ export default defineComponent({
           TELMED: this.tel,
           EMAILMED: this.email,
         })
-        .then((response) => (novoCadastro.value = false));
+        .then((response) => (this.novoCadastro = false));
+      window.location.reload();
     },
   },
 });

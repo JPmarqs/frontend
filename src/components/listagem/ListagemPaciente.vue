@@ -67,7 +67,7 @@
           </div>
           <div class="flex">
             <div class="text-overline text-grey">Data de Nascimento:</div>
-            <q-input v-model="pacienteEdicao.DATANASPACI"></q-input>
+            <q-date v-model="pacienteEdicao.DATANASPACI"> </q-date>
           </div>
           <div class="flex">
             <div class="text-overline text-grey">Genero:</div>
@@ -170,6 +170,7 @@ export default defineComponent({
         const response = await api
           .patch(`/pacientes/${paciente.IDPACIENTE}`, paciente)
           .then(() => fetchPacientes());
+        formEmEdicao.value = false;
       } catch (error) {
         console.error(error);
         q.notify({
@@ -182,11 +183,11 @@ export default defineComponent({
     const abreEdicao = () => {};
     return {
       pacientes,
-      deletePaciente,
       pacienteEdicao,
       formEmEdicao,
       abreEdicao,
       patchPaciente,
+      deletePaciente,
     };
   },
 });

@@ -76,7 +76,7 @@ export default defineComponent({
       novoCadastro.value = true;
     };
     const montadata = function () {
-      const [dia, mes, ano] = dataNasc.value.split("/");
+      const [ano, mes, dia] = dataNasc.value.split("/");
       dataMontada.value = `${ano}-${mes}-${dia}`;
     };
 

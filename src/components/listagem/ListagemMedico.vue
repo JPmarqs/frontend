@@ -115,7 +115,7 @@ export default defineComponent({
     const deleteMedico = async (id) => {
       getMedicosComConsultas(id);
 
-      if (!desabilitaExclusao.value) {
+      if (desabilitaExclusao.value) {
         q.notify({
           color: "negative",
           message: "Médico não pode ser excluído, pois possui consultas",
@@ -165,7 +165,7 @@ export default defineComponent({
       try {
         const response = await api.get(`consultas/verificamedico/${id}`);
 
-        console.log(response.data.length);
+        console.log(response.data);
 
         if (response.data.length > 0) {
           desabilitaExclusao.value = true;
