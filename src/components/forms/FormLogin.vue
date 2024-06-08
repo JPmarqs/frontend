@@ -80,13 +80,11 @@ export default defineComponent({
         })
         .catch((error) => {
           console.log(error);
-          if (error.response.status === 400) {
-            emailJaCadastrado.value = true;
-            q.notify({
-              color: "negative",
-              message: "Email ou senha incorretos",
-            });
-          }
+          emailJaCadastrado.value = true;
+          q.notify({
+            color: "negative",
+            message: "Email ou senha incorretos",
+          });
         });
     };
     return {
